@@ -3,10 +3,9 @@ package guru.springframework.sfgdi.services;
 /**
  * Created by jt on 12/27/19.
  */
-public class PrimaryGreetingService implements GreetingService {
-
+public class I18NSpanishGreetingService implements GreetingService {
     @Override
     public String sayGreeting() {
-        return "Hello World - From the PRIMARY Bean";
+        return "Hola Mundo - ES";
     }
 }
