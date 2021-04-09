@@ -4,7 +4,6 @@ import guru.springframework.sfgdi.datasource.FakeDataSource;
 import guru.springframework.sfgdi.repository.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repository.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 /**
@@ -15,14 +14,12 @@ import org.springframework.context.annotation.*;
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(@Value("${handler.username}")String username,
-                                  @Value("${handler.password}")String password,
-                                  @Value("${handler.jdbcUrL}")String jdbcUrl) {
+    FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration) {
 
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcUrl(jdbcUrl);
-        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(sfgConfiguration.getPassword());
+        fakeDataSource.setJdbcUrl(sfgConfiguration.getJdbcUrl());
+        fakeDataSource.setUsername(sfgConfiguration.getUsername());
         return fakeDataSource;
     }
 
